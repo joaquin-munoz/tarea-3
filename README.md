@@ -54,84 +54,85 @@ Este proyecto implementa un juego de laberinto en lenguaje C, en el que el jugad
 
 ## *Paso 1 : Inicio de la partida*
 
-´´´
-========================================
-     Bienvenido a Juego del Laberinto
-========================================
-1) Cargar laberinto
-2) Iniciar partida
-3) Salir
+  ´´´
+  ========================================
+      Bienvenido a Juego del Laberinto
+  ========================================
+  1) Cargar laberinto
+  2) Iniciar partida
+  3) Salir
 
-´´´
+  ´´´
 
 ## *Paso 2 : Cargar el laberinto
 
 seleccione opcion 1 
-´´´
-Laberinto cargado correctamente.
-´´´
+  ´´´
+  Laberinto cargado correctamente.
+  ´´´
 
 ## *Paso 3 : Iniciar la partida*
 opcion 2 
 
-´´´
-=== ESTADO ACTUAL ===
-Escenario: Entrada del Laberinto
-Descripcion: Estás en la entrada de un oscuro laberinto.
+  ´´´
+  === ESTADO ACTUAL ===
+  Escenario: Entrada del Laberinto
+  Descripcion: Estás en la entrada de un oscuro laberinto.
 
-Items disponibles:
-  1) linterna (Peso: 1, Puntaje: 10)
-  2) llave (Peso: 2, Puntaje: 15)
+  Items disponibles:
+    1) linterna (Peso: 1, Puntaje: 10)
+    2) llave (Peso: 2, Puntaje: 15)
 
-Tiempo restante: 10
+  Tiempo restante: 10
 
-Inventario:
-  (vacio)
-Peso total: 0 | Puntaje: 0
+  Inventario:
+    (vacio)
+  Peso total: 0 | Puntaje: 0
 
-Direcciones disponibles:
-W) Arriba
-D) Derecha
+  Direcciones disponibles:
+  W) Arriba
+  D) Derecha
 
-== OPCIONES ==
-1) Recoger items
-2) Descartar items
-3) Avanzar en una direccion
-4) Reiniciar partida
-5) Salir
-´´´
+  == OPCIONES ==
+  1) Recoger items
+  2) Descartar items
+  3) Avanzar en una direccion
+  4) Reiniciar partida
+  5) Salir
+  ´´´
 
 ## *Paso 4.1 : Recoger ítems*
 elegimos opcion 1,luego elegimos la 1 o 2 dependiendo:
 
-´´´
-¿Deseas recoger (objeto)? (1 = si, 0 = no): 
-´´´
+  ´´´
+  ¿Deseas recoger (objeto)? (1 = si, 0 = no): 
+  ´´´
 
 ## *Paso 4.2: Descartar items*
 elegimos opcion 2,luego elegimos la 1 o 2 dependiendo:
 
-´´´
-¿Deseas descartar (objeto)? (1 = si, 0 = no): 
-´´´
+  ´´´
+  ¿Deseas descartar (objeto)? (1 = si, 0 = no): 
+  ´´´
 
 ## *Paso 4.3: Moverse por el laberinto*
 
 Seleccionamos la opción 3:
 
-´´´
-¿A qué dirección quieres ir? (W/A/S/D): W
-´´´
+  ´´´
+  ¿A qué dirección quieres ir? (W/A/S/D): W
+  ´´´
+
 ## *Paso 4.4: Reiniciar partida*
 opcion 4 y se restablecen los valores de partida
 
-´´´
-Reiniciando partida...
-´´´
+  ´´´
+  Reiniciando partida...
+  ´´´
 
 ## *Paso 5: Salir*
 opcion 5
 
-´´´
-Saliendo del juego...
-´´´
+  ´´´
+  Saliendo del juego...
+  ´´´
