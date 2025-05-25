@@ -44,59 +44,94 @@ Este proyecto implementa un juego de laberinto en lenguaje C, en el que el jugad
 * Al llegar al estado final, muestra el puntaje acumulado y finaliza la partida.
 
 ## Problemas conocidos
-
-* Actualmente no hay restricción de peso máximo, por lo que el jugador puede cargar objetos indefinidamente.
-* No se guarda el historial de movimientos para permitir deshacer pasos.
-* El código asume que los IDs de escenarios en el CSV comienzan en `1`.
+* en el grafo en el escenario final si el campo de objeto no contiene absolutamente nada se vuelve loop infinito al intentar llegar a la meta , si se escribe cualquier palabra o caracter esto se soluciona.
 
 ## A mejorar
 
-* **Peso máximo:** Limitar el inventario para aumentar el reto.
-* **Guardado de partida:** Persistir el progreso y permitir cargar partidas.
-* **Historial de movimientos:** Poder deshacer pasos o mostrar ruta recorrida.
-* **Interfaz gráfica:** Migrar a GUI para mayor interactividad.
+* Peso máximo: Limitar el inventario para aumentar el reto.
 
 ## Ejemplo de uso
 
-```txt
+## *Paso 1 : Inicio de la partida*
+
+´´´
 ========================================
      Bienvenido a Juego del Laberinto
 ========================================
 1) Cargar laberinto
 2) Iniciar partida
 3) Salir
-Ingrese su opción: 1
-Laberinto cargado correctamente.
 
+´´´
+
+## *Paso 2 : Cargar el laberinto
+
+seleccione opcion 1 
+´´´
+Laberinto cargado correctamente.
+´´´
+
+## *Paso 3 : Iniciar la partida*
+opcion 2 
+
+´´´
 === ESTADO ACTUAL ===
-Escenario: Entrada principal
-Descripción: Una puerta rechinante abre paso a esta mansión.
+Escenario: Entrada del Laberinto
+Descripcion: Estás en la entrada de un oscuro laberinto.
 
 Items disponibles:
-  1) Cuchillo (Peso: 3, Puntaje: 1)
-  2) Pan (Peso: 2, Puntaje: 1)
+  1) linterna (Peso: 1, Puntaje: 10)
+  2) llave (Peso: 2, Puntaje: 15)
 
 Tiempo restante: 10
 
 Inventario:
-  (vacío)
+  (vacio)
 Peso total: 0 | Puntaje: 0
 
 Direcciones disponibles:
-  ↑ Arriba
-  ↓ Abajo
+W) Arriba
+D) Derecha
 
 == OPCIONES ==
-1) Recoger ítems
-2) Descartar ítems
-3) Avanzar en una dirección
+1) Recoger items
+2) Descartar items
+3) Avanzar en una direccion
 4) Reiniciar partida
 5) Salir
-Seleccione una opción: 1
-¿Deseas recoger Cuchillo? (1 = sí, 0 = no): 1
-¿Deseas recoger Pan? (1 = sí, 0 = no): 0
+´´´
 
-=== ESTADO ACTUAL ===
-Escenario: Entrada principal
-...
-```
+## *Paso 4.1 : Recoger ítems*
+elegimos opcion 1,luego elegimos la 1 o 2 dependiendo:
+
+´´´
+¿Deseas recoger (objeto)? (1 = si, 0 = no): 
+´´´
+
+## *Paso 4.2: Descartar items*
+elegimos opcion 2,luego elegimos la 1 o 2 dependiendo:
+
+´´´
+¿Deseas descartar (objeto)? (1 = si, 0 = no): 
+´´´
+
+## *Paso 4.3: Moverse por el laberinto*
+
+Seleccionamos la opción 3:
+
+´´´
+¿A qué dirección quieres ir? (W/A/S/D): W
+´´´
+## *Paso 4.4: Reiniciar partida*
+opcion 4 y se restablecen los valores de partida
+
+´´´
+Reiniciando partida...
+´´´
+
+## *Paso 5: Salir*
+opcion 5
+
+´´´
+Saliendo del juego...
+´´´
