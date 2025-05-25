@@ -1,127 +1,102 @@
-tarea 3 : Joaquin muñoz 
-### Sistema de administracion sobre tickets de soporte técnico en una empresa,
+tarea 3 :  joaquin muñoz
 
-# Descripción
+## Descripción
 
+Este proyecto implementa un juego de laberinto en lenguaje C, en el que el jugador recorre distintos escenarios recogiendo objetos y avanzando hasta llegar al estado final. Los escenarios y objetos se cargan desde un archivo CSV (`data/graphquest.csv`), y se representan mediante un grafo usando listas y mapas.
 
+### Requisitos previos
 
-# Cómo compilar y ejecutar
+* **Visual Studio Code** (u otro editor de tu preferencia).
+* Extensión de C/C++ de Microsoft en VS Code.
+* **GCC** (MinGW en Windows o gcc en Linux/macOS).
 
-Este sistema ha sido desarrollado en lenguaje C y puede ejecutarse fácilmente utilizando "Visual Studio Code" junto con una extensión para C/C++, como "C/C++ Extension Pack" de Microsoft. Para comenzar a trabajar con el sistema en tu equipo local, sigue estos pasos:
+### Pasos
 
-# Requisitos previos:
+1. Clona o descarga el repositorio y descomprímelo.
+2. Abre la carpeta del proyecto en VS Code.
+3. Abre la terminal integrada (`Terminal > Nueva terminal`).
+4. Compila el proyecto con:
 
-- Tener instalado [Visual Studio Code],puede intalarlo en el siguiente link : https://code.visualstudio.com.
-- Instalar la extensión "C/C++" de Microsoft.
-- Tener instalado un compilador de C (como gcc). Si estás en Windows, se recomienda instalar [MinGW](https://www.mingw-w64.org/) o utilizar el entorno [WSL](https://learn.microsoft.com/en-us/windows/wsl/).
+   ```
+   gcc tdas/*.c tarea3.c -o tarea3 -Wno-unused-result
+   ```
+5. Ejecuta la aplicación:
 
-# Pasos para compilar y ejecutar:
+   ```
+   ./tarea3
+   ```
 
-1. Descarga y descomprime el archivo (.zip) en una carpeta de tu elección donde mas te acomode.
-2. Abre el proyecto en Visual Studio Code**
-    - Inicia Visual Studio Code.
-    - Selecciona (Archivo > Abrir carpeta...) y elige la carpeta donde descomprimiste el proyecto.
-3. Compila el código
-    - Abre el archivo principal por ejemplo en tarea1.c
-    - Abre la terminal integrada Terminal > Nueva terminal, puedes usar la terminal que desees , recomendada git bash.
-    - En la terminal, compila el programa con el siguiente comando: 
-        (gcc tdas/*.c tarea3.c -Wno-unused-result -o tarea3)
-        
-4. Ejecuta el programa
-    - Una vez compilado, puedes ejecutar la aplicación con:
-        (./tarea3)        
+## Funcionalidades
 
-## Funcionalidades 
-    ### **Funcionalidades para la aplicación:**
+* **Carga de laberinto desde CSV:** Lee escenarios, objetos y conexiones.
+* **Representación de grafo:** Cada estado almacena adyacentes, objetos y metadatos.
+* **Interfaz de texto:** Menú principal con opciones cargar, jugar y salir.
+* **Recoger y descartar objetos:** Control de inventario y peso.
+* **Movimiento dirigido:** Mostrar direcciones disponibles y calcular tiempo de desplazamiento según peso.
+* **Detección de estado final:** Al alcanzar el escenario marcado como final, el juego termina.
+* **Reinicio de partida:** Permite volver al estado inicial manteniendo menú.
 
-1. *Registrar ticket*:
-    - El usuario ingresa el ID y la descripción del problema.
-    - La aplicación registra el ticket con la hora de registro actual y asigna automáticamente prioridad "Bajo".
+## Funcionamiento correcto
 
-2. *Asignar prioridad a ticket*:
-    - El usuario ingresa el ID del ticket y el nuevo nivel de prioridad ("Alto", "Medio", "Bajo").
-    - La aplicación actualiza la prioridad del ticket. Si el ID no existe, se muestra un aviso.
+* El laberinto se carga sin errores si el CSV está bien formateado.
+* El jugador puede recoger/descartar objetos y avanzar según las direcciones disponibles.
+* El tiempo restante se actualiza correctamente según el peso del inventario.
+* Al llegar al estado final, muestra el puntaje acumulado y finaliza la partida.
 
-3. *Mostrar lista de tickets pendientes*:
-    - Muestra todos los tickets ordenados por prioridad (de "Alto" a "Bajo") y,
-    dentro de la misma prioridad, por hora de registro (orden de llegada).
+## Problemas conocidos
 
-4. *Procesar siguiente ticket* :
-    - Selecciona el ticket con mayor prioridad y más antiguo dentro de su nivel para ser atendido.
-    - Elimina el ticket de la lista y muestra sus datos (ID, descripción, prioridad y hora de registro).
-    - Si no hay tickets pendientes, muestra un aviso.
+* Actualmente no hay restricción de peso máximo, por lo que el jugador puede cargar objetos indefinidamente.
+* No se guarda el historial de movimientos para permitir deshacer pasos.
+* El código asume que los IDs de escenarios en el CSV comienzan en `1`.
 
-5. *Buscar ticket por ID y mostrar detalles* :
-    - El usuario ingresa un ID, y la aplicación busca el ticket correspondiente en la lista.
-    - Si existe, muestra todos sus datos (descripción, prioridad, hora de registro).
-    - Si no existe, muestra un mensaje de error.
+## A mejorar
 
-# Funcionando correctamente:
-- Registrar tickets con sus datos básicos y una prioridad inicial.
-- Asignar o modificar la prioridad de los tickets.
-- Ver la lista de espera de tickets, ordenada por prioridad y hora de registro.
-- Atender al siguiente tickets, respetando el orden de prioridad.
+* **Peso máximo:** Limitar el inventario para aumentar el reto.
+* **Guardado de partida:** Persistir el progreso y permitir cargar partidas.
+* **Historial de movimientos:** Poder deshacer pasos o mostrar ruta recorrida.
+* **Interfaz gráfica:** Migrar a GUI para mayor interactividad.
 
-# Problemas conocidos:
+## Ejemplo de uso
 
-- posibles errores de segmentacion si el cliente ingresa datos con un tamaño mayor al establecido 
+```txt
+========================================
+     Bienvenido a Juego del Laberinto
+========================================
+1) Cargar laberinto
+2) Iniciar partida
+3) Salir
+Ingrese su opción: 1
+Laberinto cargado correctamente.
 
-# A mejorar:
+=== ESTADO ACTUAL ===
+Escenario: Entrada principal
+Descripción: Una puerta rechinante abre paso a esta mansión.
 
-- crear atajos en caso de que el usuario se equivoque y salte error para poder intentarlo nuevamente sin tener que volver al inicio o en que caso que quiera devolverse hacia atras.
+Items disponibles:
+  1) Cuchillo (Peso: 3, Puntaje: 1)
+  2) Pan (Peso: 2, Puntaje: 1)
 
-# Ejemplo de uso
-**Paso 1: Registrar un Nuevo Ticket**
+Tiempo restante: 10
 
-        se comienza registrando un nuevo ticket ingresando al sistema.
+Inventario:
+  (vacío)
+Peso total: 0 | Puntaje: 0
 
-        ```
-        Opción seleccionada: 1) Registrar ticket:
-        ingresar ID: 1234
-        ingresar problema: (problema)
-        ```
+Direcciones disponibles:
+  ↑ Arriba
+  ↓ Abajo
 
-        El sistema registra A Joaquin con una prioridad inicial "Bajo" y guarda la hora actual de registro. La prioridad inicial puede ser ajustada más tarde.
+== OPCIONES ==
+1) Recoger ítems
+2) Descartar ítems
+3) Avanzar en una dirección
+4) Reiniciar partida
+5) Salir
+Seleccione una opción: 1
+¿Deseas recoger Cuchillo? (1 = sí, 0 = no): 1
+¿Deseas recoger Pan? (1 = sí, 0 = no): 0
 
-**Paso 2: Asignar Prioridad a un Paciente**
-
-        el usuario puede asignar un nivel de prioridad para su problema.
-
-        ```
-        Opción seleccionada: 2) Asignar prioridad a ticket
-        Ingrese el ID de Joaquin: 1234
-        Seleccione el nuevo nivel de prioridad (Alto, Medio, Bajo): Alto
-        ```
-
-        El sistema actualiza la prioridad de Joaquin a "Alto", asegurando que será una de los proximos usuarios en ser atendido.
-
-**Paso 3: Ver la Lista de Espera**
-
-        El usuario revisa la lista de espera para ver todos los tickets y sus prioridades.
-
-        ```
-        Opción seleccionada: 3) Mostrar lista de espera
-        ```
-
-        La lista muestra a Joaquin , indicando su prioridad alta y que al ser el primero seria el primero en ser atendido.
-
-**Paso 4: Atender al Siguiente Paciente**
-
-        Joaquin es llamado para ser atendido basándose en su prioridad.
-
-        ```
-        Opción seleccionada: 4) Atender al siguiente ticket
-        ```
-
-        El sistema muestra que Joaquin está siendo atendido y la elimina de la lista de espera.
-**Paso 5: Buscar ticket por ID y mostrar detalles**
-        - Joaquin ingresa su ID, la aplicación busca el ticket correspondiente en la lista.Si existe, muestra todos sus datos (descripción, prioridad, hora de registro). Si no existe, muestra un mensaje de error.
-        
-        ```
-        Opción seleccionada: 5) Buscar ticket por ID:
-        ingrese su ID : 1234
-        descripción: (problema)
-        prioridad : Alto
-        hora de registro (hora a la que se ingreso el ticket inicialmente)
-
-        ```
+=== ESTADO ACTUAL ===
+Escenario: Entrada principal
+...
+```
